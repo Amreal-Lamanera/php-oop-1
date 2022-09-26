@@ -1,14 +1,16 @@
 <?php
 
+include_once __DIR__ . '/Actor.php';
+
 class Movie
 {
     public $name;
     public $genres;
     public $year;
-    public $cast;
+    public $cast = [];
     public $img;
 
-    function __construct($name, $img, $genres = null, $year = null, $cast = null)
+    function __construct($name, $img, $genres = null, $year = null, $cast = [])
     {
         $this->name = $name;
         $this->genres = $genres;
@@ -27,5 +29,31 @@ class Movie
     {
         if (filter_var($img, FILTER_VALIDATE_URL) || is_file($img))
             $this->img = $img;
+    }
+
+    public function addActor()
+    {
+        $args = func_get_args();
+        foreach ($args as $actor) {
+            if ($actor instanceof Actor) {
+                $fullname = $actor->getFullname();
+                if (!in_array($fullname, $this->cast) || $this->cast == null)
+                    $this->cast[] = $fullname;
+            }
+        }
+    }
+
+    public function removeActor($actor)
+    {
+        $args = func_get_args();
+        foreach ($args as $actor) {
+            if ($actor instanceof Actor) {
+                $fullname = $actor->getFullname();
+                if (in_array($fullname, $this->cast)) {
+                    $key = array_search($fullname, $this->cast);
+                    array_splice($this->cast, $key, 1);
+                }
+            }
+        }
     }
 }

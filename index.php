@@ -1,6 +1,7 @@
 <?php
 
 include_once __DIR__ . '/classes/Movie.php';
+include_once __DIR__ . '/classes/Actor.php';
 
 $movies = [];
 
@@ -25,6 +26,28 @@ $thor = new Movie('Thor - The dark world', './img/thor.jfif', ['fantasy', 'actio
 array_push($movies, $LOTR1, $LOTR2, $LOTR3, $harry_potter, $thor);
 
 // var_dump($movies);
+
+$aragorn = new Actor('Viggo', 'Mortensen');
+$gandalf = new Actor('Gino', 'Fastidio');
+$LOTR1->addActor($aragorn);
+// var_dump($LOTR1);
+
+$LOTR1->addActor($gandalf);
+// var_dump($LOTR1);
+
+$LOTR1->removeActor($gandalf);
+// var_dump($LOTR1);
+
+$sam = new Actor('Sean', 'Austin');
+$LOTR1->addActor($sam);
+// var_dump($LOTR1);
+
+$frodo = new Actor('Elijah', 'Wood');
+$legolas = new Actor('Orlando', 'Bloom');
+$LOTR1->addActor($frodo, $legolas);
+$LOTR2->addActor($legolas, $frodo, $aragorn, $sam);
+$LOTR3->addActor($legolas, $frodo, $aragorn, $sam);
+
 ?>
 
 <!doctype html>
