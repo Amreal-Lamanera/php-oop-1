@@ -8,7 +8,7 @@ class Movie
     public $cast;
     public $img;
 
-    function __construct($name, $img, $genres = 'unknown', $year = 'unknown', $cast = 'unknown')
+    function __construct($name, $img, $genres = null, $year = null, $cast = null)
     {
         $this->name = $name;
         $this->genres = $genres;
