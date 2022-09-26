@@ -23,7 +23,9 @@ $thor = new Movie('Thor - The dark world', './img/thor.jfif', ['fantasy', 'actio
 
 // var_dump($thor);
 
-array_push($movies, $LOTR1, $LOTR2, $LOTR3, $harry_potter, $thor);
+$inglorious = new Movie('Bastardi senza gloria', './img/inglorious.jfif');
+
+array_push($movies, $LOTR1, $LOTR2, $LOTR3, $harry_potter, $thor, $inglorious);
 
 // var_dump($movies);
 
